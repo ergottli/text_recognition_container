@@ -1,0 +1,129 @@
+Модуль для тестов - run.py
+Интерфейс модуля и определение типа файла - text_recognition.py
+Модуль распознавания текста с изображения - image_mod.py
+Модкль получения текста из файлов - text_mod.py
+
+Supported text formats:
+txt
+doc
+docx
+msg
+ppt
+pptx
+pdf(text)
+odf
+html
+xml
+.class
+.jar
+
+Supported image formats:
+BMP
+PNM
+PNG
+JFIF
+JPEG
+TIFF
+gif
+pdf(image)
+
+Получение текста из файлов, содержащих символы.
+Для извлечения текста из текстовых файлов используется Apache-tika.
+Для работы с PDF используется pdf2image и poppler.
+
+Получение текста из файлов, содержащих изображение.
+Для character recognition - непосредственно, распознавания символов,
+был выбран модуль tesseract-OCR,
+распространяющийся под лицензией Apache 2.0.
+Чтобы была возможность использовать его в коде Python,
+используется обертка для tesseract-OCR - pytesseract.
+В роли библиотеки для предобработки изображения выступает openCV.
+
+Как аргумент функции convert_image_to_string(image: any, lang_arg=‘rus')
+передается путь до файла изображения и,
+при необходимости, язык. Стандартным языком является русский,
+который используется при отсутствии аргумента для выбора языка.
+
+----------------------------------------------------------------------------------
+
+Установка модуля:
+
+Автоматическая установка(на данный момент для linux и mac):
+
+Необходимо запустить install.py из директории setup. Возможно, понадобятся права администратора.
+
+Установка вручную:
+
+Pip-пакеты:
+1) numpy
+2) pillow
+3) pdf2image
+4) pytesseract
+5) opencv-python
+6) tika-app
+
+Сторонние приложения:
+
+1) poppler:
+     for windows   - bin files on https://blog.alivate.com.au/poppler-windows/
+                     or conda install -c conda-forge poppler
+     for linux     - apt/apt-get install poppler-utils
+     for mac os    - brew install poppler
+     official site - https://poppler.freedesktop.org/
+
+2) tessetact-ocr:
+     installation guide  - https://github.com/tesseract-ocr/tesseract/wiki
+     official repository - https://github.com/tesseract-ocr/tesseract
+
+3) возможные зависимости:
+        libsm6
+        libxext6
+        libxrender-dev
+
+Apache-tika     -     https://tika.apache.org/
+poppler         -     https://poppler.freedesktop.org/
+tesseract-OCR   -     https://github.com/tesseract-ocr/tesseract
+opencv-python   -     https://pypi.org/project/opencv-python/
+pytesseract     -     https://pypi.org/project/pytesseract/
+pdf2image       -     https://pypi.org/project/pdf2image/
+Pillow          -     https://pypi.org/project/Pillow/
+numpy           -     https://numpy.org/
+tika-app        -     https://pypi.org/project/tika-app/
+
+Как пользоваться модулем?
+from text_recognition import text_rec
+
+text_rec(path: str, lang='rus')
+path - путь к файлу из которого необходимо извлечь текст.
+lang - язык, на который распознается текст с изображения.
+Функция возвращает строку, если файл содержит тест, либо None - в случае его отсутствия.
+
+----------------------------------------------------------------------------------
+
+Apache-tika types:
+
+Text files:
+
+extension
+txt    -    text/plain
+doc    -    application/msword
+docx   -    application/vnd.openxmlformats-officedocument.wordprocessingml.document
+msg    -    application/vnd.ms-outlook
+ppt    -    application/vnd.ms-powerpoint
+pptx   -    application/vnd.openxmlformats-officedocument.presentationml.presentation
+pdf    -    application/pdf
+odf    -    application/vnd.oasis.opendocument.formula
+html   -    text/html
+xml    -    application/xml
+.class -    application/java
+.jar   -    application/java-archive
+
+Image files:
+
+bmp    -    image/bmp
+pnm    -    image/x-portable-anymap
+png    -    image/png
+jfif   -    image/jpeg  /  image/pjpeg
+jpeg   -    image/jpeg  /  image/pjpeg
+tiff   -    image/tiff
+gif    -    image/gif

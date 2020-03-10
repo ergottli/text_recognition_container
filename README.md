@@ -1,3 +1,9 @@
+# text_recognition_container
+
+Данный проект представляет из себя контейнер, который позволяет с помощью OpenCV, tesseract и Apache-Tika извлекать текстовую информацию из картинок, pdf-файлов, текстовых форматов(таких как dox, docx), презентаций(ppt, pptx).
+
+## Instruction
+
 Создание образа происходит с помощью следующей команды:
 
 build -t our_image:version /path/to/directory/with/Dockerfile (.)
@@ -50,27 +56,27 @@ wget http://ip-VM/path/to/file/result.txt - скачивание файла.
 Если ваша функция возвращает строку, ее можно записать в переменную string_answer.
 
 
-FAQ Docker.
-----------------------------------------------------------------------------------------------------------------
+## FAQ Docker.
 
 1. Что необходимо установить, чтобы воспользоваться Docker?
-	-docker-machine
-	-docker		(На некоторых ОС могут поставляться вместе)
-	-Драйвер виртуальной машины, например virtualbox.
+-docker-machine
+-docker		(На некоторых ОС могут поставляться вместе)
+-Драйвер виртуальной машины, например virtualbox.
 
 2. Как создать виртуальную машину?
-	docker-machine create --driver=virtualbox Name_of_machine
+```docker-machine create --driver=virtualbox Name_of_machine```
 
 3. Как импортировать виртуальное окружение машины?
-	docker-machine env Name_of_machine
-	После ввода команды, вы должны получить следующий вывод:
+```docker-machine env Name_of_machine```
+После ввода команды, вы должны получить следующий вывод:
 
-	export DOCKER_TLS_VERIFY="1"
-	export DOCKER_HOST="tcp://192.168.99.104:2376"
-	export DOCKER_CERT_PATH="/Users/test_user/.docker/machine/machines/Char"
-	export DOCKER_MACHINE_NAME="Name_of_machine"
-	# Run this command to configure your shell:
-	# eval $(docker-machine env Name_of_machine)
-
-	Вам необходимо скопировать и ввести в терминал данную строку eval $(docker-machine env Name_of_machine)
+```
+export DOCKER_TLS_VERIFY="1"
+export DOCKER_HOST="tcp://192.168.99.104:2376"
+export DOCKER_CERT_PATH="/Users/test_user/.docker/machine/machines/Char"
+export DOCKER_MACHINE_NAME="Name_of_machine"
+# Run this command to configure your shell:
+# eval $(docker-machine env Name_of_machine)
+```
+Вам необходимо скопировать и ввести в терминал данную строку ```eval $(docker-machine env Name_of_machine)```
 

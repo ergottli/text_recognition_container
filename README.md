@@ -59,15 +59,18 @@ wget http://ip-VM/path/to/file/result.txt - скачивание файла.
 ## FAQ Docker.
 
 1. Что необходимо установить, чтобы воспользоваться Docker?
--docker-machine
--docker		(На некоторых ОС могут поставляться вместе)
--Драйвер виртуальной машины, например virtualbox.
+
+* docker-machine
+* docker (На некоторых ОС могут поставляться вместе)
+* Драйвер виртуальной машины, например VirtualBox.
 
 2. Как создать виртуальную машину?
 ```docker-machine create --driver=virtualbox Name_of_machine```
 
 3. Как импортировать виртуальное окружение машины?
+
 ```docker-machine env Name_of_machine```
+
 После ввода команды, вы должны получить следующий вывод:
 
 ```
@@ -78,5 +81,6 @@ export DOCKER_MACHINE_NAME="Name_of_machine"
 # Run this command to configure your shell:
 # eval $(docker-machine env Name_of_machine)
 ```
+
 Вам необходимо скопировать и ввести в терминал данную строку ```eval $(docker-machine env Name_of_machine)```
 
